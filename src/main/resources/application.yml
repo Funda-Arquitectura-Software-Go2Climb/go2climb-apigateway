@@ -45,3 +45,7 @@ spring:
           uri: https://activity-services.onrender.com
           predicates:
             - Path=/api/activities/**
+        - id: agency_reviews_service
+          uri: https://agencyreview.onrender.com
+          predicates:
+            - Path=/agency_reviews/**
