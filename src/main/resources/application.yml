@@ -1,0 +1,47 @@
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: agency_service
+          uri: https://agencymicro.azurewebsites.net
+          predicates:
+            - Path=/api/v1/agencies/**
+
+        - id: agency_service_auth
+          uri: https://agencymicro.azurewebsites.net
+          predicates:
+            - Path=/auth/**
+
+        - id: service_service
+          uri: https://servicemicro.azurewebsites.net
+          predicates:
+            - Path=/api/v1/service/**
+          #filters: AuthenticationFilter
+
+        - id: service_reviews_service
+          uri: https://service-review-repo.onrender.com
+          predicates:
+            - Path=/service-reviews/reviews/**
+
+        - id: tourist_service
+          uri: https://touristrepo.onrender.com
+          predicates:
+            - Path=/tourists/**
+
+        - id: activity_review_service
+          uri: https://revisionactividad.onrender.com
+          predicates:
+            - Path=/api/v1/activityreview/**
+
+        - id: Hired_Service_service
+          uri: https://hired-service.onrender.com
+          predicates:
+            - Path=/api/hired_services/**
+        - id: activity_service
+          uri: https://activity-services.onrender.com
+          predicates:
+            - Path=/api/activities/**
